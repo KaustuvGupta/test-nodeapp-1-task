@@ -74,6 +74,7 @@ stage('Docker Deploy'){
                 docker rm 026-node-app
             fi
             if docker images | grep 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app
+            then
                 docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
             fi
             docker pull 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
