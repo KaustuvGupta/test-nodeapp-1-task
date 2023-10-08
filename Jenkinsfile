@@ -81,6 +81,7 @@ stage('Docker Deploy'){
         '''
          }
        }
+
      
 }   
 }
