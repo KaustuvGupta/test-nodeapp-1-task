@@ -41,9 +41,6 @@ pipeline {
        }
     
 }
-
-
-stages{
     
     stage('Checkout2'){
         agent{
@@ -53,7 +50,6 @@ stages{
             checkout scm
             }
     }
-}
 
 
     
