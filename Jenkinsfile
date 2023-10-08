@@ -34,7 +34,7 @@ pipeline {
          }
        }
 
-    stage('Docker Push'){
+    stage('Docker Push2'){
         steps{
          sh 'docker push 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest'
          }
@@ -44,34 +44,4 @@ pipeline {
     
 }
 
-    stage('Docker Deploy'){
-        steps{
-         sh '''
-            if docker image ls | grep 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app
-            then
-                if docker ps | grep 026-node-app
-                then
-                    docker stop 026-node-app
-                    docker rm 026-node-app
-                    docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                    docker pull 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                    docker run --name 026-node-app -p 8080:8081 -d 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                elif docker ps -a | grep 026-node-app
-                then
-                    docker rm 026-node-app
-                    docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                    docker pull 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                    docker run --name 026-node-app -p 8080:8081 -d 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                else
-                    docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                    docker pull 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                    docker run --name 026-node-app -p 8080:8081 -d 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                fi
-            else
-                docker pull 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-                docker run --name 026-node-app -p 8080:8081 -d 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-            fi
-        '''
-         }
-       }  
 }
