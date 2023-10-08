@@ -44,23 +44,30 @@ pipeline {
     
 }
 
-agent{
-        label 'app_node'
-    }
+
 stages{
     stage('Checkout2'){
+        agent{
+        label 'app_node'
+    }
           steps{
             checkout scm
             }
     }
     stage('ECR Login2'){
+        agent{
+        label 'app_node'
+    }
         steps{
         //  sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 427134667329.dkr.ecr.us-east-1.amazonaws.com'
          sh 'docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 427134667329.dkr.ecr.us-east-1.amazonaws.com'
          }
        }
 
-    stage('Docker Deploy2'){
+    stage('Docker Deploy'){
+        agent{
+        label 'app_node'
+    }
         steps{
          sh '''
             if docker image ls | grep 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app
