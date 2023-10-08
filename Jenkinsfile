@@ -43,12 +43,12 @@ pipeline {
 }
 
 
+stages{
     
-agent{
+    stage('Checkout2'){
+        agent{
         label 'app_node'
     }
-stages{
-    stage('Checkout2'){
           steps{
             checkout scm
             }
