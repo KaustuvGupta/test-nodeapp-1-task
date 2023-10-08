@@ -68,13 +68,12 @@ stage('Docker Deploy'){
             if docker ps | grep 026-node-app
             then
                 docker stop 026-node-app
-                docker rm 026-node-app
-                docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-            elif docker ps -a | grep 026-node-app
+            fi
+            if docker ps -a | grep 026-node-app
             then
                 docker rm 026-node-app
-                docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
-            elif docker image ls | grep 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app
+            fi
+            if docker image ls | grep 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app
                 docker rmi 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
             fi
             docker pull 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest
