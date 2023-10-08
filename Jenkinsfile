@@ -40,7 +40,7 @@ pipeline {
          }
        }
 
-stage('Checkout2'){
+stage('App Checkout'){
         agent{
         label 'app_node'
     }
@@ -48,6 +48,16 @@ stage('Checkout2'){
             checkout scm
             }
     }
+
+stage('APP ECR Login'){
+    agent{
+        label 'app_node'
+    }
+        steps{
+        //  sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 427134667329.dkr.ecr.us-east-1.amazonaws.com'
+         sh 'docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 427134667329.dkr.ecr.us-east-1.amazonaws.com'
+         }
+       }
 
 
      
