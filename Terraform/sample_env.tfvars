@@ -1,0 +1,14 @@
+environment="XXX"
+project="XXX"
+assignment="XXX"
+s3_bucket="XXX"
+s3_bucket_region="XXX"
+vpc_region ="XXX"
+vpc_name="XXX"
+vpc_cidr="X.X.X.X/X"
+vpc_azs=["X", "X"]
+vpc_public_subnets=["X.X.X.X/X","X.X.X.X/X"]
+vpc_private_subnets=["X.X.X.X/X","X.X.X.X/X"]
+vpc_public_subnet_name=["X", "X"]
+vpc_private_subnet_name=["X", "X"]
+my_ip_cidr="X.X.X.X/X"
