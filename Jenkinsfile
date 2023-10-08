@@ -41,6 +41,8 @@ pipeline {
        }
     
 }
+
+
     
 agent{
         label 'app_node'
@@ -51,4 +53,8 @@ stages{
             checkout scm
             }
     }
+}
+
+
+    
 }
