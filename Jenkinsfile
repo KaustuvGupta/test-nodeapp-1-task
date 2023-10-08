@@ -39,7 +39,14 @@ pipeline {
          sh 'docker push 427134667329.dkr.ecr.us-east-1.amazonaws.com/026-node-app:latest'
          }
        }
-
+   stage('Print helloworld'){
+        steps{
+         sh '''
+         echo "hello"
+         echo "world"
+            '''
+         }
+       }
 
     
 }
